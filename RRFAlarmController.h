@@ -12,16 +12,18 @@
 
 @interface RRFAlarmController : NSObject <TKComponentBundleLoading> {
 
-    // PROTOCOL MEMBERS //////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////    
-    NSDictionary                                                *definition;
-    id                                                          delegate;
-    NSString                                                    *errorLog;
-    IBOutlet NSView                                             *view;
+  // PROTOCOL MEMBERS //////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////    
+  NSDictionary                                                *definition;
+  id                                                          delegate;
+  NSString                                                    *errorLog;
+  IBOutlet NSView                                             *view;
 
-    // ADDITIONAL MEMBERS ////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////
-    
+  // ADDITIONAL MEMBERS ////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////
+  IBOutlet NSTextField *promptField;
+  IBOutlet NSButton *continueButton;
+  NSSound *audio;
 }
 
 // PROTOCOL PROPERTIES ///////////////////////////////////////////////////////
@@ -33,8 +35,9 @@
 
 // ADDITIONAL PROPERTIES /////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
-// ...
-// ...
+@property (assign) IBOutlet NSTextField *promptField;
+@property (assign) IBOutlet NSButton *continueButton;
+@property (nonatomic, retain) NSSound *audio;
 
 #pragma mark REQUIRED PROTOCOL METHODS
 /**
@@ -120,6 +123,7 @@
  Add the error to an ongoing error log
  */
 - (void)registerError: (NSString *)theError;
+- (IBAction)buttonClicked: (id)sender;
 
 #pragma mark Preference Keys
 // HERE YOU DEFINE KEY REFERENCES FOR ANY PREFERENCE VALUES
@@ -127,6 +131,11 @@
 ///////////////////////////////////////////////////////////
 extern NSString * const RRFAlarmTaskNameKey;
 extern NSString * const RRFAlarmDataDirectoryKey;
+extern NSString * const RRFAlarmAudioKey;
+extern NSString * const RRFAlarmAudioDurationKey;
+extern NSString * const RRFAlarmShouldRequireSequenceKey;
+extern NSString * const RRFAlarmSequenceKey;
+extern NSString * const RRFAlarmPromptKey;
 
 #pragma mark Internal Strings
 // HERE YOU DEFINE KEYS FOR CONSTANT STRINGS

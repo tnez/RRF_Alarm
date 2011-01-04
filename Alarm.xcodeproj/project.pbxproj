@@ -29,6 +29,7 @@
 		404B5EE51250B8C500437416 /* BooleanOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ECE1250B59C00437416 /* BooleanOption.xib */; };
 		404B5F2D12524A5600437416 /* RRFAlarmManifest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 404B5F2C12524A5600437416 /* RRFAlarmManifest.plist */; };
 		404B5F2E12524A5600437416 /* RRFAlarmManifest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 404B5F2C12524A5600437416 /* RRFAlarmManifest.plist */; };
+		4062FF5A12D386EB00EF5CDD /* Alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4062FF5912D386EB00EF5CDD /* Alarm.wav */; };
 		4063B2B512551F490096BFE1 /* RRFAlarm.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D5B49B6048680CD000E48DA /* RRFAlarm.bundle */; };
 		40C04C52122D5921003E8D1C /* TKUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 40340010122D5809003CABA9 /* TKUtility.framework */; };
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
@@ -114,6 +115,7 @@
 		404B5ED41250B59C00437416 /* Mock_AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mock_AppDelegate.m; sourceTree = "<group>"; };
 		404B5ED51250B59C00437416 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		404B5F2C12524A5600437416 /* RRFAlarmManifest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RRFAlarmManifest.plist; sourceTree = "<group>"; };
+		4062FF5912D386EB00EF5CDD /* Alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Alarm.wav; sourceTree = "<group>"; };
 		8D5B49B6048680CD000E48DA /* RRFAlarm.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RRFAlarm.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2F7E65807B2D6F200F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -167,6 +169,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4062FF5912D386EB00EF5CDD /* Alarm.wav */,
 				404B5F2C12524A5600437416 /* RRFAlarmManifest.plist */,
 				4034000C122D57F9003CABA9 /* RRFAlarmMainNib.xib */,
 				8D5B49B7048680CD000E48DA /* Info.plist */,
@@ -339,6 +342,7 @@
 				8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */,
 				4034000D122D57F9003CABA9 /* RRFAlarmMainNib.xib in Resources */,
 				404B5F2D12524A5600437416 /* RRFAlarmManifest.plist in Resources */,
+				4062FF5A12D386EB00EF5CDD /* Alarm.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

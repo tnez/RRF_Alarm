@@ -10,7 +10,7 @@
 #import "RRFAlarmController.h"
 
 @implementation RRFAlarmController
-@synthesize delegate,definition,errorLog,view;
+@synthesize delegate,definition,errorLog,view,promptField,continueButton,audio;
 
 #pragma mark HOUSEKEEPING METHODS
 /**
@@ -20,7 +20,7 @@
     [errorLog release];
     // any additional release calls go here
     // ------------------------------------
-    
+    [audio release];
     [super dealloc];
 }
 
@@ -29,7 +29,8 @@
  Start the component - will receive this message from the component controller
  */
 - (void)begin {
-    
+  [audio setLoops:YES];
+  [audio play];
 }
 /**
  Return a string representation of the data directory
@@ -85,22 +86,29 @@
  */
 - (void)setup {
 
-    // CLEAR ERROR LOG
-    //////////////////
-    [self setErrorLog:@""];
-    
-    // --- WHAT NEEDS TO BE INITIALIZED BEFORE THIS COMPONENT CAN OPERATE? ---
-    ///////////////////////////////////////////////////////////////////////////
-    
-    // LOAD NIB
-    ///////////
-    if([NSBundle loadNibNamed:RRFAlarmMainNibNameKey owner:self]) {
-        // SETUP THE INTERFACE VALUES
-        /////////////////////////////
-        
-    } else { // NIB DID NOT LOAD
-        [self registerError:@"Could not load Nib file"];
-    }
+  // CLEAR ERROR LOG
+  //////////////////
+  [self setErrorLog:@""];
+  
+  // --- WHAT NEEDS TO BE INITIALIZED BEFORE THIS COMPONENT CAN OPERATE? ---
+  /////////////////////////////////////////////////////////////////////////////
+  // load audio
+  NSString *audioPath = [[NSBundle bundleForClass:[self class]]
+                         pathForResource:@"Alarm" ofType:@"wav"];
+  audio = [[NSSound alloc] initWithContentsOfFile:audioPath byReference:YES];
+  if(!audio) {
+    [self registerError:@"Alarm - could not load audio"];
+  }
+  // LOAD NIB
+  ///////////
+  if([NSBundle loadNibNamed:RRFAlarmMainNibNameKey owner:self]) {
+    // SETUP THE INTERFACE VALUES
+    /////////////////////////////
+    // set the prompt value
+    [promptField setStringValue:[definition valueForKey:RRFAlarmPromptKey]];
+  } else { // NIB DID NOT LOAD
+    [self registerError:@"Could not load Nib file"];
+  }
 }
 /**
  Return YES if component should perform recovery actions
@@ -156,12 +164,25 @@
     [self setErrorLog:[[errorLog stringByAppendingString:theError]
                        stringByAppendingString:@"\n"]];
 }
+/** When the button is clicked... the alarm is over */
+- (IBAction)buttonClicked: (id)sender {
+  // stop the annoying alarm!!!
+  [audio stop];
+  // notify our delegate that we are done
+  [delegate componentDidFinish:self];
+}
 
 #pragma mark Preference Keys
 // HERE YOU DEFINE KEY REFERENCES FOR ANY PREFERENCE VALUES
 // ex: NSString * const RRFAlarmNameOfPreferenceKey = @"RRFAlarmNameOfPreference"
 NSString * const RRFAlarmTaskNameKey = @"RRFAlarmTaskName";
 NSString * const RRFAlarmDataDirectoryKey = @"RRFAlarmDataDirectory";
+NSString * const RRFAlarmAudioKey = @"RRFAlarmAudio";
+NSString * const RRFAlarmAudioDurationKey = @"RRFAlarmAudioDuration";
+NSString * const RRFAlarmShouldRequireSequenceKey = @"RRFAlarmShouldRequireSequence";
+NSString * const RRFAlarmSequenceKey = @"RRFAlarmSequence";
+NSString * const RRFAlarmPromptKey = @"RRFAlarmPrompt";
+
 
 #pragma mark Internal Strings
 // HERE YOU DEFINE KEYS FOR CONSTANT STRINGS //

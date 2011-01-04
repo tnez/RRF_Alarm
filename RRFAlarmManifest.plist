@@ -46,6 +46,22 @@
 			<key>help</key>
 			<string>Directory where component will save data file - Initial value is set to session global</string>
 		</dict>
+		<dict>
+			<key>optionIdentifier</key>
+			<string>RRFAlarmPrompt</string>
+			<key>displayName</key>
+			<string>Alarm Prompt</string>
+			<key>type</key>
+			<integer>0</integer>
+			<key>default</key>
+			<string>*** ALARM ***</string>
+			<key>allowsEdit</key>
+			<true/>
+			<key>allowsNull</key>
+			<false/>
+			<key>help</key>
+			<string>This is the string that is displayed on the screen during the alarm</string>
+		</dict>
 	</array>
 </dict>
 </plist>
