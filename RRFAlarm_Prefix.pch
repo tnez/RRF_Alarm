@@ -1,0 +1,15 @@
+//
+// Prefix header for all source files of the 'Alarm' target in the 'Alarm' project.
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
+
+// DEBUG-ONLY LOGGING
+/////////////////////
+#ifdef DEBUG
+#  define DLog(...) NSLog(__VA_ARGS__)
+#else
+#  define DLog(...) /* */
+#endif
